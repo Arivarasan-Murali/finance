@@ -1,0 +1,65 @@
+<form *ngIf="!loggedIn" class="formContainer" #f="ngForm" (ngSubmit)="auth(f)">
+  <label *ngIf="!signInButton" for="name">Name</label>
+  <input *ngIf="!signInButton" type="text" name="name" ngModel />
+  <label for="name">Email</label>
+  <input type="email" name="email" ngModel required />
+  <label for="password">Password</label>
+  <input type="password" name="password" ngModel required />
+  <button type="submit">{{ signInButton ? "Sign in" : "Sign up" }}</button>
+  <p>
+    <span>{{ signInButton ? "New User ?" : "Existing user ?" }}</span
+    >&nbsp;<span class="btnToggle" (click)="signInButton = !signInButton">{{
+      signInButton ? "Sign up" : "Sign in"
+    }}</span>
+  </p>
+</form>
+<div *ngIf="loggedIn" class="formContainer">
+  <label for="name">Name:</label>
+  <span>:{{ userName }}</span>
+  <label for="email">Email:</label>
+  <span>:{{ email }}</span>
+  <label for="profilePic">Profile Picture:</label>
+  <span>:{{ photoUrl }}</span>
+  <span>
+    <button style="background-color: yellowgreen" (click)="updateProfile()">
+      Update Profile
+    </button>
+    <button
+      style="background-color: red; color: white"
+      (click)="showDeleteConfirmation = true"
+    >
+      Delete Account
+    </button>
+  </span>
+</div>
+
+<div *ngIf="showBackdrop" class="backdrop">
+  <div class="errorWindow">
+    <p class="errorTitle">Error</p>
+    <p class="errorMessage">{{ errorMessage }}</p>
+    <button (click)="backdropResponse()">OK</button>
+  </div>
+</div>
+
+<div *ngIf="showDeleteConfirmation" class="backdrop">
+  <div class="errorWindow">
+    <p class="errorTitle">Delete profile</p>
+    <p class="errorMessage">
+      Are you sure you want to delete the account ? It can't be undone
+    </p>
+    <p>
+      <button
+        style="background-color: red; color: white"
+        (click)="deleteProfile()"
+      >
+        Yes
+      </button>
+      <button
+        style="background-color: yellowgreen"
+        (click)="showDeleteConfirmation = false"
+      >
+        No
+      </button>
+    </p>
+  </div>
+</div>

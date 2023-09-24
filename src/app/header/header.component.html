@@ -1,0 +1,51 @@
+<header>
+  <nav>
+    <ul>
+      <li
+        [routerLink]="['/home']"
+        routerLinkActive="router-link-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Home
+      </li>
+      <li
+        [routerLink]="['/dashboard']"
+        routerLinkActive="router-link-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Dashboard
+      </li>
+      <li
+        [routerLink]="['/manage-data']"
+        routerLinkActive="router-link-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Manage Data
+      </li>
+      <li
+        [routerLink]="['/settings']"
+        routerLinkActive="router-link-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Settings
+      </li>
+      <li class="profile">
+        <img [src]="photoUrl" alt="" />
+        <p (click)="login()">
+          {{ dataStorage.loggedIn ? userName : "Login" }}
+        </p>
+        <span *ngIf="showUserMenu" class="userMenu">
+          <span
+            class="userMenuItems"
+            (click)="manageData()"
+            [routerLink]="['/auth']"
+            routerLinkActive="router-link-active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Manage</span
+          >
+          <span class="userMenuItems" (click)="logout()">Logout</span>
+        </span>
+      </li>
+    </ul>
+  </nav>
+</header>

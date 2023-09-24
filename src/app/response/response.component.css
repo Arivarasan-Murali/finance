@@ -1,0 +1,10 @@
+.responseComponent {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 30vw;
+  height: 30vh;
+  /* background-image: url("../../assets/Responses/mrBeanWaiting.gif"); */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
